@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #303030;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+                   }
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #303030; 
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: Arial, sans-serif; 
+            transition: background-color 0.3s ease; 
+        }
+        .button:hover {
+            background-color: #fa3a1f; 
+        }
+    </style>
+    <script>
+        function loadPage(page) {
+            // Store the last visited page in local storage
+            localStorage.setItem('lastVisitedPage', page);
+            // Load the page in the content frame
+            window.parent.frames['content'].location.href = page;
+        }
+
+        function checkLastVisitedPage() {
+            const lastVisitedPage = localStorage.getItem('lastVisitedPage');
+            if (lastVisitedPage) {
+                window.parent.frames['content'].location.href = lastVisitedPage;
+            }
+        }
+
+        window.onload = checkLastVisitedPage;
+    </script>
+</head>
+<body>
+    <a href="javascript:void(0);" onclick="loadPage('homepage.html');" class="button">HOME</a>
+    <a href="javascript:void(0);" onclick="loadPage('biodata.html');" class="button">BIO</a>
+    <a href="javascript:void(0);" onclick="loadPage('experience.html');" class="button">EXPERIENCE</a>
+    <a href="javascript:void(0);" onclick="loadPage('education.html');" class="button">EDUCATION</a>
+    <a href="javascript:void(0);" onclick="loadPage('family.html');" class="button">FAMILY</a>
+    <a href="javascript:void(0);" onclick="loadPage('gallery.html');" class="button">GALLERY</a>
+</body>
+</html>
